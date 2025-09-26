@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Safe Shop</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body { margin:0; font-family:sans-serif; display:flex; height:100vh }
+    .s { width:180px; background:#222; color:#fff; padding:15px }
+    .s a { color:#ccc; display:block; margin:10px 0; text-decoration:none }
+    .m { flex:1; padding:20px; background:#f0f0f0 }
+    .c { background:#fff; padding:15px; margin:0 0 15px; border-radius:8px }
+    table { width:100%; border-collapse:collapse }
+    th,td { padding:8px; border-bottom:1px solid #ddd; text-align:left }
+  </style>
+</head>
+<body>
+  <div class="s">
+    <h2>Safe Shop</h2>
+    <a>Dashboard</a><a>Products</a><a>Orders</a><a>Users</a>
+  </div>
+  <div class="m" id="app"></div>
+
+  <script type="text/babel">
+    const App = () => (
+      <>
+        <div className="c"><h2>Dashboard</h2><p>Sales: $10k | Orders: 100</p></div>
+        <div className="c">
+          <h3>Products</h3>
+          <table><thead><tr><th>Name</th><th>Price</th><th>Stock</th></tr></thead>
+            <tbody>{[["Watch",50,10],["Phone",100,5]].map((p,i)=>(
+              <tr key={i}><td>{p[0]}</td><td>${p[1]}</td><td>{p[2]}</td></tr>))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById("app")).render(<App/>);
+  </script>
+</body>
+</html>
